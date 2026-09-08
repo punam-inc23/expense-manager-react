@@ -1,0 +1,14 @@
+:root{
+  --primary-color: #0EA16C;
+  --bg-grad-1: #EBC894;
+  --bg-grad-2: #B49EF4;
+  --sub-head: #505F76;
+  --label-login: #3D4A3D;
+  --placeholder-login: #667085;
+  --login-border: #BCCBB9;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
