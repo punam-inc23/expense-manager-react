@@ -1,0 +1,110 @@
+.header {
+    height: 64px;
+    border-bottom: 1px solid #e5e7eb;
+    background-color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 38px;
+    box-sizing: border-box;
+}
+
+
+/* Search */
+
+.search-box {
+    width: 470px;
+    height: 38px;
+
+    background-color: #f1f2ff;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 14px;
+    box-sizing: border-box;
+}
+
+.search-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    margin-right: 9px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+
+    width: 100%;
+
+    font-size: 14px;
+    color: #374151;
+}
+
+.search-box input::placeholder {
+    color: #8b91a5;
+}
+
+
+/* Right side */
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+
+/* Notification */
+
+.notification-btn {
+    position: relative;
+
+    border: none;
+    background: transparent;
+
+    width: 28px;
+    height: 28px;
+
+    padding: 0;
+    cursor: pointer;
+}
+
+.notification-btn img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.notification-dot {
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    background-color: #ef4444;
+
+    border-radius: 50%;
+
+    top: 2px;
+    right: 2px;
+
+    border: 1px solid white;
+}
+
+
+/* Profile */
+
+.profile-image {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+}

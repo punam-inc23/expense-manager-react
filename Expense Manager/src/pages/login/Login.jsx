@@ -1,8 +1,8 @@
-import "../css/Login.css"
-import expenseLogo from "../assets/images/expense-logo.png";
-import profileIcon from "../assets/icons/profile.png";
-import lockIcon from "../assets/icons/lock.png";
-import googleIcon from "../assets/images/google.png";
+import "../login/Login.css"
+import expenseLogo from "../../assets/images/expense-logo.png";
+import profileIcon from "../../assets/icons/profile.png";
+import lockIcon from "../../assets/icons/lock.png";
+import googleIcon from "../../assets/images/google.png";
 
 function Login(){
     return(
