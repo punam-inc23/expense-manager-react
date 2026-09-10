@@ -1,4 +1,9 @@
 import "./Header.css";
+import search from "../../../assets/icons/search.png"
+import notification from "../../../assets/icons/notification.png"
+import profile from "../../../assets/images/profile.png"
+
+
 
 function Header() {
     return (
@@ -6,7 +11,7 @@ function Header() {
 
             <div className="search-box">
                 <img
-                    src="/assets/search.png"
+                    src={search}
                     alt="search"
                     className="search-icon"
                 />
@@ -21,14 +26,14 @@ function Header() {
 
                 <button className="notification-btn">
                     <img
-                        src="/assets/notification.png"
+                        src={notification}
                         alt="notification"
                     />
                     <span className="notification-dot"></span>
                 </button>
 
                 <img
-                    src="/assets/profile.png"
+                    src={profile}
                     alt="profile"
                     className="profile-image"
                 />

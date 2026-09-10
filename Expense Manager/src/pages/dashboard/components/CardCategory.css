@@ -1,44 +1,32 @@
 .category-card {
     background-color: #ffffff;
-
     border: 1px solid #dedfe3;
     border-radius: 14px;
-
     width: 100%;
     min-height: 154px;
-
     padding: 21px;
-
     box-sizing: border-box;
 }
 
-
-/* Category name + icon */
 
 .category-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* gap: 10px; */
 }
 
 .category-name {
     margin: 0;
-
-    font-size: 14px;
+    font-size: 16px;
     color: #4b5563;
-
     font-weight: 500;
 }
-
-
-/* Icon */
 
 .category-icon {
     width: 42px;
     height: 42px;
-
     border-radius: 11px;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,31 +35,20 @@
 .category-icon img {
     width: 23px;
     height: 23px;
-
     object-fit: contain;
 }
 
-
-/* Amount */
-
 .category-amount {
     margin: 14px 0 7px;
-
     font-size: 28px;
     font-weight: 700;
-
     color: #172033;
-
     letter-spacing: -0.5px;
 }
 
-
-/* Change */
-
 .category-change {
     margin: 0;
-
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .category-change.positive {

@@ -1,0 +1,247 @@
+.recent-transactions-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e5ea;
+    border-radius: 14px;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 3rem;
+}
+
+.transactions-header {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+    box-sizing: border-box;
+}
+
+.transactions-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #171c2f;
+}
+
+.view-all-btn {
+    border: none;
+    background: none;
+    color: #00864b;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.view-all-btn:hover {
+    text-decoration: underline;
+}
+
+.transactions-table-header {
+    height: 40px;
+    display: grid;
+    grid-template-columns: 1.1fr 2.2fr 1.2fr 1fr 0.8fr;
+    align-items: center;
+    padding: 0 32px 0 48px;
+    background-color: #f1f2ff;
+    box-sizing: border-box;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #68716c;
+}
+
+.transaction-row {
+    min-height: 54px;
+    display: grid;
+    grid-template-columns:1.1fr 2.2fr 1.2fr 1fr 0.8fr;
+    align-items: center;
+    padding: 0 32px 0 32px;
+    border-bottom: 1px solid #edf0ed;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+}
+
+.transaction-row:last-child {
+    border-bottom: none;
+}
+
+.transaction-row:hover {
+    background-color: #fafbfc;
+}
+
+.transaction-date {
+    color: #202738;
+    font-size: 0.9rem;
+}
+
+.merchant-details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #202738;
+    font-weight: 600;
+}
+
+/* =========================
+   MERCHANT ICON
+========================= */
+
+.merchant-icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.merchant-icon-img {
+    width: 17px;
+    height: 17px;
+    display: block;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.merchant-icon.food-drink {
+    background-color: #fff0df;
+    color: #ff6b00;
+}
+
+.merchant-icon.education {
+    background-color: #e3efff;
+    color: #3679ee;
+}
+
+.merchant-icon.income {
+    background-color: #e4f3ec;
+    color: #159765;
+}
+
+.merchant-icon.housing {
+    background-color: #f0e3ff;
+    color: #9747ff;
+}
+
+.merchant-icon.groceries {
+    background-color: #fff4bf;
+    color: #e9a900;
+}
+
+.transaction-category {
+    display: flex;
+    align-items: center;
+}
+
+.category-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 9px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.category-badge.food-drink {
+    background-color: #fff0e8;
+    color: #e9572b;
+}
+
+.category-badge.education {
+    background-color: #edf4ff;
+    color: #2874e8;
+}
+
+.category-badge.income {
+    background-color: #e8f4ee;
+    color: #15905e;
+}
+
+.category-badge.housing {
+    background-color: #f5ebff;
+    color: #9747e8;
+}
+
+.category-badge.groceries {
+    background-color: #fff8dc;
+    color: #b77b00;
+}
+
+.transaction-amount {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.transaction-amount.expense {
+    color: #e22f35;
+}
+
+.transaction-amount.income {
+    color: #00864b;
+}
+
+.transaction-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.action-btn {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    background: none;
+    color: #758178;
+    cursor: pointer;
+}
+
+/* =========================
+   TRANSACTION ACTIONS
+========================= */
+
+.transaction-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.action-btn {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    margin: 0;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+    border-radius: 6px;
+
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.action-icon {
+    width: 17px;
+    height: 17px;
+
+    display: block;
+    object-fit: contain;
+}
+
+.action-btn:hover {
+    color: #202b24;
+}

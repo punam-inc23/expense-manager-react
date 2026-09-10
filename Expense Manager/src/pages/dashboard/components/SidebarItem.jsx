@@ -50,7 +50,7 @@ function SidebarItem() {
                         to={item.path}
                         key={index}
                         className={({ isActive }) =>
-                            isActive
+                            item.path && isActive
                                 ? "sidebar-link active"
                                 : "sidebar-link"
                         }

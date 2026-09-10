@@ -1,5 +1,10 @@
-import CategoryCard from "./CategoryCard";
+import CategoryCard from "./CardCategory";
 import "./CategoryCards.css";
+import food from "../../../assets/icons/food.png"
+import travel from "../../../assets/icons/travel.png"
+import tuition from "../../../assets/icons/tuition.png"
+import entertainment from "../../../assets/icons/entertainment.png"
+
 
 function CategoryCards() {
 
@@ -10,7 +15,7 @@ function CategoryCards() {
             amount: "₹2,450.00",
             change: "↗ +4.5% from last month",
             positive: true,
-            icon: "/assets/food.png",
+            icon: food,
             iconBackground: "#fff0dc"
         },
         {
@@ -19,7 +24,7 @@ function CategoryCards() {
             amount: "₹3,200.00",
             change: "↓ ₹150 pending",
             positive: false,
-            icon: "/assets/travel.png",
+            icon: travel,
             iconBackground: "#e2edff"
         },
         {
@@ -28,7 +33,7 @@ function CategoryCards() {
             amount: "₹1,245.50",
             change: "↗ 8% increase this week",
             positive: false,
-            icon: "/assets/tuition.png",
+            icon: tuition,
             iconBackground: "#f0e4ff"
         },
         {
@@ -37,13 +42,13 @@ function CategoryCards() {
             amount: "₹1,500.00",
             change: "↗ 8% increase this week",
             positive: false,
-            icon: "/assets/entertainment.png",
+            icon: entertainment,
             iconBackground: "#e5f0ff"
         }
     ];
 
     return (
-        <section className="category-section">
+        <div className="category-section">
 
             <div className="category-grid">
 
@@ -56,7 +61,7 @@ function CategoryCards() {
 
             </div>
 
-        </section>
+        </div>
     );
 }
 

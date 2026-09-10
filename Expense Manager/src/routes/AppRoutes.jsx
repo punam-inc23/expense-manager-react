@@ -1,15 +1,22 @@
 import { Routes, Route } from "react-router-dom";
 
+import Login from "../pages/login/Login";
 import Dashboard from "../pages/dashboard/Dashboard";
-import AddExpense from "../pages/AddExpense/AddExpense";
-import Transactions from "../pages/Transactions/Transactions";
-import Categories from "../pages/Categories/Categories";
-import Settings from "../pages/Settings/Settings";
 
 function AppRoutes() {
 
     return (
         <Routes>
+
+            <Route
+                path="/"
+                element={<Login />}
+            />
+
+            <Route
+                path="/login"
+                element={<Login />}
+            />
 
             <Route
                 path="/dashboard"

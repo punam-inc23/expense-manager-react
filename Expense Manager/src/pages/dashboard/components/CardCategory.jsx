@@ -17,6 +17,8 @@ function CategoryCard({ category }) {
                         backgroundColor: category.iconBackground
                     }}
                 >
+                   { console.log(category.icon)}
+                    
                     <img
                         src={category.icon}
                         alt={category.name}

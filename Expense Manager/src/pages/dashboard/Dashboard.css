@@ -2,114 +2,30 @@
     --logout : #BA1A1A;
     --item-bg: rgba(14, 161, 108, 0.16);
     --item-name: rgba(14, 161, 108, 1);
+    --body-bg: #f0f5fc;
 
 }
 
-
-.sidebar {
-    width: 250px;
+.dashboard-div{
+    display: flex;
+    /* gap: 2rem; */
+    overflow: hidden;
     height: 100vh;
-    /* background-color: rgba(14, 161, 108, 0.16); */
-    border-right: 1px solid #e5e7eb;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-shrink: 0;
-}
-
-.logo-name {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    /* justify-content: center; */
-    gap: 10px;
-    padding: 0 16px;
-    /* border-bottom: 1px solid #eeeeee; */
-}
-
-.logo-name img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-}
-
-.logo-name p {
-    margin: 0;
-    font-size: 20px;
-    font-weight: bold;
-    color: #202124;
-    white-space: nowrap;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
     width: 100%;
 }
 
-.sidebar li {
-    padding: 0;
-    margin: 0;
-}
-
-.sidebar-item {
-    width: 90%;
-    padding: 16px 10px;
-}
-
-.sidebar-link {
-    height: 38px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 0 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.sidebar-link p {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 400;
-    color: #30343b;
-}
-
-.svg-icons {
-    width: 16px;
-    height: 16px;
+.dashboard-div > :first-child {
     flex-shrink: 0;
-    object-fit: contain;
+    height: 100vh;
 }
 
-.sidebar-link:hover {
-    background-color: var(--item-bg);
-}
 
-.sidebar-link.active {
-    background-color: var(--item-bg);
-}
-
-.sidebar-link.active p {
-    color: var(--item-name);
-    font-weight: 600;
-}
-
-.lower-side{
-    border-top: 1px solid #e5e7eb;
-}
-
-.logout-section{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    cursor: pointer;
-}
-
-.logout-section p{
-    color: var(--logout);
-    font-size: 18px;
+.body-main{
+    background-color: var(--body-bg);
+    flex: 1;
+    min-width: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100vh;
+    box-sizing: border-box;
 }
