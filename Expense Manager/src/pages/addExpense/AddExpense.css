@@ -1,0 +1,205 @@
+
+.expense-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 10rem;
+    gap: 2rem;
+    background-color: #f8fafc;
+    min-height: 100vh;
+}
+
+.expense-head {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 750px;
+}
+
+.expense-head h1 {
+    font-size: 2.1rem;
+    color: #131B2E;
+}
+
+.expense-head p {
+    color: #3D4A3D;
+    font-size: 1.2rem;
+}
+
+.expense-div form {
+    background-color: white;
+    width: 100%;
+    max-width: 750px;
+    padding: 2rem;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 25px;
+    border: 2px solid #e5e7eb;
+    box-sizing: border-box;
+}
+
+.expense-div form > label {
+    font-size: 1.3rem;
+    color: #131B2E;
+}
+
+.input-div {
+    background-color: #F1F5F9;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 12px;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #131B2E;
+    outline: none;
+}
+
+.input-div:focus {
+    outline: 2px solid #10B981;
+}
+
+.amount-div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.amount-div span {
+    color: #64748b;
+    font-size: 1rem;
+}
+
+.amount-div input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 1rem;
+    color: #131B2E;
+}
+
+select.input-div {
+    appearance: auto;
+    cursor: pointer;
+    color: #64748b;
+}
+
+.description-input {
+    min-height: 100px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.expense-btns {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.expense-btns button {
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.save-btn {
+    background-color: #10B981;
+    color: white;
+    border: none;
+    flex: 1;
+}
+
+.save-btn:hover {
+    background-color: #059669;
+}
+
+.cancel-btn {
+    background-color: white;
+    color: #131B2E;
+    border: 1px solid #d1d5db;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
+
+.cancel-btn:hover {
+    background-color: #f1f5f9;
+}
+
+.pro-tip-div {
+    width: 100%;
+    max-width: 750px;
+    box-sizing: border-box;
+    background-color: #EFF6FF;
+    border: 1px solid #DBEAFE;
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.pro-tip-div img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.pro-tip-data {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.pro-tip-head {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.pro-tip-subhead {
+    font-size: 1rem;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+    .expense-div {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .expense-div {
+        padding: 1.5rem 1rem;
+    }
+
+    .expense-head h1 {
+        font-size: 1.7rem;
+    }
+
+    .expense-head p {
+        font-size: 1rem;
+    }
+
+    .expense-div form {
+        padding: 1.5rem;
+    }
+
+    .expense-btns {
+        flex-direction: column;
+    }
+
+    .save-btn,
+    .cancel-btn {
+        width: 100%;
+    }
+}

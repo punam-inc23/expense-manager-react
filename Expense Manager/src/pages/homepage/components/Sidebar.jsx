@@ -5,7 +5,7 @@ import "./Sidebar.css"
 import { useNavigate } from "react-router-dom";
 import { removeUser } from "../../../utils/userStorage";
 
-function Sidebar(){
+function Sidebar({ activeTab, onTabChange }){
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -20,7 +20,7 @@ function Sidebar(){
                     <img src={logo} alt="logo" />
                     <p>Expense Manager</p>
                 </div>
-                <SidebarItem />
+                <SidebarItem activeTab={activeTab} onTabChange={onTabChange} />
             </div>
 
             <div className="lower-side">

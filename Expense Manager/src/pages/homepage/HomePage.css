@@ -1,0 +1,45 @@
+:root{
+    --logout : #BA1A1A;
+    --item-bg: rgba(14, 161, 108, 0.16);
+    --item-name: rgba(14, 161, 108, 1);
+    --body-bg: #f0f5fc;
+
+}
+
+.homepage-div{
+    display: flex;
+    /* gap: 2rem; */
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+}
+
+.homepage-div > :first-child {
+    flex-shrink: 0;
+    height: 100vh;
+}
+
+
+.body-main{
+    background-color: var(--body-bg);
+    flex: 1;
+    min-width: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.placeholder-page {
+    padding: 2rem;
+}
+
+.placeholder-page h1 {
+    color: #202124;
+    font-size: 1.75rem;
+}
+
+.placeholder-page p {
+    color: var(--sub-head);
+    margin-top: 0.5rem;
+}

@@ -1,42 +1,36 @@
-import { NavLink } from "react-router-dom";
-
 import dashboard from "../../../assets/icons/dashboard.svg";
 import add_expenses from "../../../assets/icons/add_expenses.svg";
 import transaction from "../../../assets/icons/transaction.svg";
 import categories from "../../../assets/icons/categories.svg";
 import settings from "../../../assets/icons/settings.svg";
 
-function SidebarItem() {
+function SidebarItem({ activeTab, onTabChange }) {
 
     const itemData = [
         {
             img: dashboard,
             name: "Dashboard",
-            path: "/dashboard"
+            tab: "dashboard"
         },
         {
             img: add_expenses,
             name: "Add Expense",
-            // path: "/add-expense"
-            path: ""
+            tab: "add-expense"
         },
         {
             img: transaction,
             name: "Transactions",
-            // path: "/transactions"
-            path: ""
+            tab: "transactions"
         },
         {
             img: categories,
             name: "Categories",
-            // path: "/categories"
-            path: ""
+            tab: "categories"
         },
         {
             img: settings,
             name: "Settings",
-            // path: "/settings"
-            path: ""
+            tab: "settings"
         }
     ];
 
@@ -46,14 +40,11 @@ function SidebarItem() {
             {
                 itemData.map((item, index) => (
 
-                    <NavLink
-                        to={item.path}
+                    <button
+                        type="button"
                         key={index}
-                        className={({ isActive }) =>
-                            item.path && isActive
-                                ? "sidebar-link active"
-                                : "sidebar-link"
-                        }
+                        className={`sidebar-link ${activeTab === item.tab ? "active" : ""}`}
+                        onClick={() => onTabChange(item.tab)}
                     >
 
                         <img
@@ -64,7 +55,7 @@ function SidebarItem() {
 
                         <p>{item.name}</p>
 
-                    </NavLink>
+                    </button>
 
                 ))
             }

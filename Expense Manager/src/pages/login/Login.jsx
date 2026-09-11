@@ -32,7 +32,7 @@ function Login(){
         console.log("Login successful");
         console.log("Stored user:", userData);
 
-        navigate("/dashboard");
+        navigate("/homepage");
     };
 
 

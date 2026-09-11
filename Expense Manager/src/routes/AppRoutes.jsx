@@ -2,6 +2,8 @@ import { Routes, Route } from "react-router-dom";
 
 import Login from "../pages/login/Login";
 import Dashboard from "../pages/dashboard/Dashboard";
+import HomePage from "../pages/homepage/HomePage";
+import AddExpense from "../pages/addExpense/AddExpense";
 
 function AppRoutes() {
 
@@ -19,14 +21,19 @@ function AppRoutes() {
             />
 
             <Route
+                path="/homepage"
+                element={<HomePage />}
+            />
+
+            <Route
                 path="/dashboard"
                 element={<Dashboard />}
             />
 
-            {/* <Route
+            <Route
                 path="/add-expense"
                 element={<AddExpense />}
-            /> */}
+            />
 
             {/* <Route
                 path="/transactions"
