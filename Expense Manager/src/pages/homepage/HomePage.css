@@ -1,9 +1,11 @@
 :root{
-    --logout : #BA1A1A;
-    --item-bg: rgba(14, 161, 108, 0.16);
-    --item-name: rgba(14, 161, 108, 1);
-    --body-bg: #f0f5fc;
-
+    --logout : var(--color-danger-dark);
+    --color-danger-dark: #BA1A1A;
+    --color-body-bg: #f0f5fc;
+    --color-text: #202124;
+    --color-text-muted: #64748b;
+    --color-item-bg: rgba(14, 161, 108, 0.16);
+    --color-item-name: rgba(14, 161, 108, 1);
 }
 
 .homepage-div{
@@ -12,6 +14,7 @@
     overflow: hidden;
     height: 100vh;
     width: 100%;
+    min-width: 0;
 }
 
 .homepage-div > :first-child {
@@ -21,7 +24,7 @@
 
 
 .body-main{
-    background-color: var(--body-bg);
+    background-color: var(--color-body-bg);
     flex: 1;
     min-width: 0;
     overflow-y: auto;
@@ -35,11 +38,25 @@
 }
 
 .placeholder-page h1 {
-    color: #202124;
+    color: var(--color-text);
     font-size: 1.75rem;
 }
 
 .placeholder-page p {
     color: var(--sub-head);
     margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .homepage-div {
+        height: 100dvh;
+    }
+
+    .homepage-div > :first-child {
+        height: 100dvh;
+    }
+
+    .body-main {
+        height: 100dvh;
+    }
 }

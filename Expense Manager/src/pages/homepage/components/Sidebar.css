@@ -1,8 +1,14 @@
+:root {
+    --color-text-nav: #30343b;
+    --color-text: #202124;
+    --logout: #BA1A1A;
+}
+
 .sidebar {
     width: 250px;
     height: 100vh;
     /* background-color: rgba(14, 161, 108, 0.16); */
-    border-right: 1px solid #e5e7eb;
+    border-right: 1px solid var(--color-border);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -31,7 +37,7 @@
     margin: 0;
     font-size: 20px;
     font-weight: bold;
-    color: #202124;
+    color: var(--color-text);
     white-space: nowrap;
 }
 
@@ -63,7 +69,7 @@
     text-decoration: none;
     border: none;
     width: 100%;
-    background: transparent;
+    background: var(--color-transparent);
     cursor: pointer;
     text-align: left;
 }
@@ -72,7 +78,7 @@
     margin: 0;
     font-size: 16px;
     font-weight: 400;
-    color: #30343b;
+    color: var(--color-text-nav);
 }
 
 .svg-icons {
@@ -83,20 +89,20 @@
 }
 
 .sidebar-link:hover {
-    background-color: var(--item-bg);
+    background-color: var(--color-item-bg);
 }
 
 .sidebar-link.active {
-    background-color: var(--item-bg);
+    background-color: var(--color-item-bg);
 }
 
 .sidebar-link.active p {
-    color: var(--item-name);
+    color: var(--color-item-name);
     font-weight: 600;
 }
 
 .lower-side{
-    border-top: 1px solid #e5e7eb;
+    border-top: 1px solid var(--color-border);
 }
 
 .logout-section{
@@ -111,4 +117,36 @@
 .logout-section p{
     color: var(--logout);
     font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 72px;
+    }
+
+    .logo-name {
+        justify-content: center;
+        padding: 0;
+    }
+
+    .logo-name p,
+    .sidebar-link p,
+    .logout-section p {
+        display: none;
+    }
+
+    .sidebar-item {
+        width: 100%;
+        padding: 12px 8px;
+    }
+
+    .sidebar-link {
+        justify-content: center;
+        gap: 0;
+        padding: 0;
+    }
+
+    .logout-section {
+        padding: 1rem 0;
+    }
 }

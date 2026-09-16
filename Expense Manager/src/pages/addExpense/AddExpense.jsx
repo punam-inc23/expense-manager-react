@@ -1,5 +1,6 @@
 import "../addExpense/AddExpense.css";
 import pro_tip from "../../assets/icons/tip.png";
+import AddExpenseForm from "./components/AddExpenseForm";
 
 function AddExpense() {
     return (
@@ -12,68 +13,8 @@ function AddExpense() {
                 </p>
             </div>
 
-            <form>
-
-                <label htmlFor="title">Expense Title</label>
-                <input
-                    type="text"
-                    id="title"
-                    className="input-div"
-                    placeholder="e.g., Monthly Grocery, Stationery"
-                />
-
-                <label htmlFor="amount">Amount (₹)</label>
-
-                <div className="amount-div input-div">
-                    <span>₹</span>
-                    <input
-                        type="number"
-                        id="amount"
-                        placeholder="0.00"
-                    />
-                </div>
-
-                <label htmlFor="category">Category</label>
-
-                <select
-                    name="Category"
-                    id="category"
-                    className="input-div"
-                    defaultValue=""
-                >
-                    <option value="" disabled>
-                        Select category
-                    </option>
-                    <option value="Food & Drink">Food & Drink</option>
-                    <option value="Education">Education</option>
-                    <option value="Income">Income</option>
-                    <option value="Housing">Housing</option>
-                    <option value="Groceries">Groceries</option>
-                    <option value="Entertainment">Entertainment</option>
-                    <option value="Transport">Transport</option>
-                    <option value="Shopping">Shopping</option>
-                </select>
-
-                <label htmlFor="description">Description (Optional)</label>
-
-                <textarea
-                    id="description"
-                    className="input-div description-input"
-                    placeholder="Add some notes about this expense..."
-                ></textarea>
-
-                <div className="expense-btns">
-                    <button type="submit" className="save-btn">
-                        Save Expense
-                    </button>
-
-                    <button type="button" className="cancel-btn">
-                        Cancel
-                    </button>
-                </div>
-
-            </form>
-
+            <AddExpenseForm />
+            
             <div className="pro-tip-div">
                 <img src={pro_tip} alt="Pro Tip" />
 

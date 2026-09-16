@@ -1,3 +1,14 @@
+:root {
+    --login-gradient-mid: #f5f0e9;
+    --login-heading: #18221d;
+    --login-shadow: rgba(0, 0, 0, 0.08);
+    --login-input-bg: #f5f6f5;
+    --login-focus-shadow: rgba(14, 161, 108, 0.08);
+    --login-muted: #8a938d;
+    --login-divider: #e1e5e2;
+    --login-button-text: #344054;
+}
+
 .login-background {
     min-height: 100vh;
     width: 100%;
@@ -5,7 +16,7 @@
     background: linear-gradient(
         135deg,
         var(--bg-grad-1),
-        #f5f0e9 45%,
+        var(--login-gradient-mid) 45%,
         var(--bg-grad-2)
     );
 
@@ -28,7 +39,7 @@
     margin: 0;
     font-size: 28px;
     font-weight: 700;
-    color: #18221d;
+    color: var(--login-heading);
     text-align: center;
 }
 
@@ -43,11 +54,11 @@
 .form-div {
     width: 100%;
     max-width: 448px;
-    background-color: white;
+    background-color: var(--color-white);
     border-radius: 8px;
     padding: 42px 32px;
     box-sizing: border-box;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 25px var(--login-shadow);
 }
 
 
@@ -55,7 +66,7 @@
     margin: 0 0 22px;
     font-size: 24px;
     font-weight: 600;
-    color: #18221d;
+    color: var(--login-heading);
 }
 
 
@@ -75,7 +86,7 @@
     align-items: center;
     border: 1px solid var(--login-border);
     border-radius: 5px;
-    background-color: #f5f6f5;
+    background-color: var(--login-input-bg);
     box-sizing: border-box;
     margin-bottom: 17px;
 }
@@ -93,7 +104,7 @@
     height: 100%;
     border: none;
     outline: none;
-    background: transparent;
+    background: var(--color-transparent);
     padding: 0 12px 0 9px;
     font-size: 12px;
     color: var(--label-login);
@@ -105,8 +116,8 @@
 
 .input-form:focus-within {
     border-color: var(--primary-color);
-    background-color: white;
-    box-shadow: 0 0 0 2px rgba(14, 161, 108, 0.08);
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 2px var(--login-focus-shadow);
 }
 
 .remember-div{
@@ -153,7 +164,7 @@
     border: none;
     border-radius: 5px;
     background-color: var(--primary-color);
-    color: white;
+    color: var(--color-white);
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
@@ -167,14 +178,14 @@
     gap: 12px;
     margin: 20px 0;
     font-size: 10px;
-    color: #8a938d;
+    color: var(--login-muted);
 }
 
 
 .option-form hr {
     flex: 1;
     border: none;
-    border-top: 1px solid #e1e5e2;
+    border-top: 1px solid var(--login-divider);
     margin: 0;
 }
 
@@ -185,10 +196,10 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background-color: white;
+    background-color: var(--color-white);
     border: 1px solid var(--login-border);
     border-radius: 5px;
-    color: #344054;
+    color: var(--login-button-text);
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;

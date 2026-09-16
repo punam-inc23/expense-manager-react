@@ -1,0 +1,173 @@
+:root {
+    --color-border-light: #e2e5ea;
+    --color-table-text: #68706b;
+    --color-control-text: #263238;
+    --color-filter-hover: #f5faf5;
+}
+
+.transaction-filter {
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+
+    padding: 1.2rem;
+    background-color: var(--color-white);
+
+    border: 1px solid var(--color-border-light);
+    border-radius: 12px;
+}
+
+.filter-search {
+    flex: 1;
+    min-width: 100px;
+}
+
+.filter-search p,
+.filter-date p,
+.filter-category p {
+    margin: 0 0 6px 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-table-text);
+}
+
+.filter-searchbar {
+    height: 31px;
+
+    display: flex;
+    align-items: center;
+    background-color: var(--color-surface-muted);
+    border-radius: 6px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.filter-searchbar img {
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+    margin-right: 9px;
+}
+
+.filter-searchbar input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: var(--color-transparent);
+    font-size: 0.9rem;
+    color: var(--color-control-text);
+}
+
+.filter-searchbar input::placeholder {
+    color: var(--placeholder-login);
+}
+
+.filter-date,
+.filter-category {
+    width: 10rem;
+    flex-shrink: 0;
+}
+
+.filter-date select,
+.filter-category select {
+    width: 100%;
+    height: 31px;
+    padding: 0 32px 0 12px;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    background-color: var(--color-surface-muted);
+    color: var(--color-control-text);
+
+    font-size: 1rem;
+    font-family: inherit;
+
+    appearance: none;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2368737d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+}
+
+.download-btn {
+    width: 10rem;
+    height: 31px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 0;
+
+    border: 1px solid var(--login-border);
+    border-radius: 6px;
+
+    background-color: var(--color-white);
+    color: var(--color-control-text);
+
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s ease,
+                border-color 0.2s ease;
+}
+
+.download-btn img {
+    width: 15px;
+    height: 15px;
+
+    object-fit: contain;
+}
+
+.download-btn:hover {
+    background-color: var(--color-filter-hover);
+    border-color: var(--login-border);
+}
+
+
+@media (max-width: 1000px) {
+    .transaction-filter {
+        align-items: stretch;
+        flex-wrap: wrap;
+    }
+
+    .filter-search {
+        flex-basis: 100%;
+    }
+
+    .filter-date,
+    .filter-category,
+    .download-btn {
+        flex: 1;
+        width: auto;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .transaction-filter {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1rem;
+    }
+
+    .filter-search,
+    .filter-date,
+    .filter-category,
+    .download-btn {
+        width: 100%;
+        flex: none;
+    }
+}

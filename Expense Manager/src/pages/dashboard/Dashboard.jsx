@@ -9,7 +9,7 @@ function Dashboard() {
         <div className="dashboard-div">
             <CategoryCards />
             <MonthlySpending />
-            <RecentTransactions />
+            <RecentTransactions limit={5} />
         </div>
     )
 }

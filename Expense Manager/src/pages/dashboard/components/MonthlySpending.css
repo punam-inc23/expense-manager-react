@@ -1,10 +1,22 @@
+:root {
+    --color-border-subtle: #e4e7ec;
+    --color-text-heading: #171c2f;
+    --color-select-bg: #f3f5ff;
+    --color-select-text: #272c3f;
+    --color-chart-bar: #e6ebf2;
+    --color-chart-label: #89918b;
+    --color-chart-hover: #cfd7e2;
+    --color-chart-selected: #0fa878;
+    --color-chart-selected-hover: #0c966b;
+}
+
 .monthly-spending-card {
-    background-color: #ffffff;
-    border: 1px solid #e4e7ec;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-subtle);
     border-radius: 14px;
     padding: 18px 20px 22px;
     box-sizing: border-box;
-    margin: 3rem;
+    margin: 3rem 0;
 }
 
 .monthly-spending-header {
@@ -18,14 +30,14 @@
     margin: 0;
     font-size: 1.2rem;
     font-weight: 600;
-    color: #171c2f;
+    color: var(--color-text-heading);
 }
 
 .year-select {
     border: none;
     outline: none;
-    background-color: #f3f5ff;
-    color: #272c3f;
+    background-color: var(--color-select-bg);
+    color: var(--color-select-text);
     font-size: 13px;
     padding: 7px 10px;
     border-radius: 7px;
@@ -63,32 +75,32 @@
 .spending-bar {
     width: 100%;
     max-width: 54px;
-    background-color: #e6ebf2;
+    background-color: var(--color-chart-bar);
     border-radius: 6px 6px 0 0;
 }
 
 .spending-bar.selected {
-    background-color: #0fa878;
+    background-color: var(--color-chart-selected);
 }
 
 .month-label {
     margin-top: 10px;
     font-size: 0.6rem;
     font-weight: 500;
-    color: #89918b;
+    color: var(--color-chart-label);
 }
 
 
 .selected-month {
-    color: #0fa878;
+    color: var(--color-chart-selected);
     font-weight: 700;
 }
 
 .spending-bar:hover {
-    background-color: #cfd7e2;
+    background-color: var(--color-chart-hover);
     cursor: pointer;
 }
 
 .spending-bar.selected:hover {
-    background-color: #0c966b;
+    background-color: var(--color-chart-selected-hover);
 }

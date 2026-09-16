@@ -1,10 +1,50 @@
+:root {
+    --color-border-light: #e2e5ea;
+    --color-text-heading: #171c2f;
+    --color-success-deep: #059669;
+    --color-surface-soft: #f1f2ff;
+    --color-table-text: #68716c;
+    --color-row-border: #edf0ed;
+    --color-row-hover: #fafbfc;
+    --color-row-text: #202738;
+    --color-category-food-bg: #fff0df;
+    --color-category-education-bg: #e3efff;
+    --color-category-income-bg: #e4f3ec;
+    --color-category-housing-bg: #f0e3ff;
+    --color-category-groceries-bg: #fff4bf;
+    --color-category-entertainment-bg: #ffe4ed;
+    --color-category-transport-bg: #dff5f8;
+    --color-category-neutral-bg: #edf0f3;
+    --color-badge-food-bg: #fff0e8;
+    --color-badge-education-bg: #edf4ff;
+    --color-badge-income-bg: #e8f4ee;
+    --color-badge-housing-bg: #f5ebff;
+    --color-badge-groceries-bg: #fff8dc;
+    --color-badge-entertainment-bg: #ffeaf1;
+    --color-badge-transport-bg: #e4f8fa;
+    --color-category-food: #e9572b;
+    --color-category-education: #2874e8;
+    --color-category-income: #15905e;
+    --color-category-housing: #9747e8;
+    --color-category-groceries: #b77b00;
+    --color-category-entertainment: #d83f73;
+    --color-category-transport: #168b9b;
+    --color-category-neutral: #56616b;
+    --color-control-border: #d9dee3;
+    --color-control-text: #5e676e;
+    --color-disabled-bg: #f7f8f9;
+    --color-disabled-border: #e1e4e6;
+    --color-disabled-text: #b8bec2;
+    --color-danger: #e22f35;
+}
+
 .recent-transactions-card {
-    background-color: #ffffff;
-    border: 1px solid #e2e5ea;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-light);
     border-radius: 14px;
     overflow: hidden;
     box-sizing: border-box;
-    margin: 3rem;
+    /* margin: 3rem; */
 }
 
 .transactions-header {
@@ -20,13 +60,13 @@
     margin: 0;
     font-size: 1.2rem;
     font-weight: 600;
-    color: #171c2f;
+    color: var(--color-text-heading);
 }
 
 .view-all-btn {
     border: none;
     background: none;
-    color: #00864b;
+    color: var(--color-success-deep);
     font-size: 12px;
     font-weight: 500;
     cursor: pointer;
@@ -39,23 +79,33 @@
 .transactions-table-header {
     height: 40px;
     display: grid;
-    grid-template-columns: 1.1fr 2.2fr 1.2fr 1fr 0.8fr;
+    grid-template-columns:
+        1.1fr
+        2.2fr
+        1.2fr
+        1fr
+        0.8fr;
     align-items: center;
     padding: 0 32px 0 48px;
-    background-color: #f1f2ff;
+    background-color: var(--color-surface-soft);
     box-sizing: border-box;
     font-size: 0.8rem;
     font-weight: 500;
-    color: #68716c;
+    color: var(--color-table-text);
 }
 
 .transaction-row {
     min-height: 54px;
     display: grid;
-    grid-template-columns:1.1fr 2.2fr 1.2fr 1fr 0.8fr;
+    grid-template-columns:
+        1.1fr
+        2.2fr
+        1.2fr
+        1fr
+        0.8fr;
     align-items: center;
-    padding: 0 32px 0 32px;
-    border-bottom: 1px solid #edf0ed;
+    padding: 0 32px;
+    border-bottom: 1px solid var(--color-row-border);
     box-sizing: border-box;
     font-size: 0.9rem;
 }
@@ -65,11 +115,11 @@
 }
 
 .transaction-row:hover {
-    background-color: #fafbfc;
+    background-color: var(--color-row-hover);
 }
 
 .transaction-date {
-    color: #202738;
+    color: var(--color-row-text);
     font-size: 0.9rem;
 }
 
@@ -77,13 +127,9 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #202738;
+    color: var(--color-row-text);
     font-weight: 600;
 }
-
-/* =========================
-   MERCHANT ICON
-========================= */
 
 .merchant-icon {
     width: 32px;
@@ -105,30 +151,36 @@
     object-fit: contain;
     flex-shrink: 0;
 }
-
 .merchant-icon.food-drink {
-    background-color: #fff0df;
-    color: #ff6b00;
+    background-color: var(--color-category-food-bg);
 }
 
 .merchant-icon.education {
-    background-color: #e3efff;
-    color: #3679ee;
+    background-color: var(--color-category-education-bg);
 }
 
 .merchant-icon.income {
-    background-color: #e4f3ec;
-    color: #159765;
+    background-color: var(--color-category-income-bg);
 }
 
 .merchant-icon.housing {
-    background-color: #f0e3ff;
-    color: #9747ff;
+    background-color: var(--color-category-housing-bg);
 }
 
 .merchant-icon.groceries {
-    background-color: #fff4bf;
-    color: #e9a900;
+    background-color: var(--color-category-groceries-bg);
+}
+
+.merchant-icon.entertainment {
+    background-color: var(--color-category-entertainment-bg);
+}
+
+.merchant-icon.transport {
+    background-color: var(--color-category-transport-bg);
+}
+
+.merchant-icon.shopping {
+    background-color: var(--color-category-neutral-bg);
 }
 
 .transaction-category {
@@ -147,28 +199,43 @@
 }
 
 .category-badge.food-drink {
-    background-color: #fff0e8;
-    color: #e9572b;
+    background-color: var(--color-badge-food-bg);
+    color: var(--color-category-food);
 }
 
 .category-badge.education {
-    background-color: #edf4ff;
-    color: #2874e8;
+    background-color: var(--color-badge-education-bg);
+    color: var(--color-category-education);
 }
 
 .category-badge.income {
-    background-color: #e8f4ee;
-    color: #15905e;
+    background-color: var(--color-badge-income-bg);
+    color: var(--color-category-income);
 }
 
 .category-badge.housing {
-    background-color: #f5ebff;
-    color: #9747e8;
+    background-color: var(--color-badge-housing-bg);
+    color: var(--color-category-housing);
 }
 
 .category-badge.groceries {
-    background-color: #fff8dc;
-    color: #b77b00;
+    background-color: var(--color-badge-groceries-bg);
+    color: var(--color-category-groceries);
+}
+
+.category-badge.entertainment {
+    background-color: var(--color-badge-entertainment-bg);
+    color: var(--color-category-entertainment);
+}
+
+.category-badge.transport {
+    background-color: var(--color-badge-transport-bg);
+    color: var(--color-category-transport);
+}
+
+.category-badge.shopping {
+    background-color: var(--color-category-neutral-bg);
+    color: var(--color-category-neutral);
 }
 
 .transaction-amount {
@@ -177,35 +244,12 @@
 }
 
 .transaction-amount.expense {
-    color: #e22f35;
+    color: var(--color-danger);
 }
 
 .transaction-amount.income {
-    color: #00864b;
+    color: var(--color-success-deep);
 }
-
-.transaction-actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.action-btn {
-    width: 18px;
-    height: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    border: none;
-    background: none;
-    color: #758178;
-    cursor: pointer;
-}
-
-/* =========================
-   TRANSACTION ACTIONS
-========================= */
 
 .transaction-actions {
     display: flex;
@@ -217,31 +261,117 @@
 .action-btn {
     width: 32px;
     height: 32px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 0;
     margin: 0;
-
     border: none;
-    background: transparent;
-
+    background: var(--color-transparent);
     cursor: pointer;
     border-radius: 6px;
-
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .action-icon {
     width: 17px;
     height: 17px;
-
     display: block;
     object-fit: contain;
 }
 
 .action-btn:hover {
-    color: #202b24;
+    background-color: var(--color-surface-muted);
+    transform: scale(1.05);
+}
+
+.transactions-footer {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    background-color: var(--color-surface-soft);
+    box-sizing: border-box;
+}
+
+.transaction-count {
+    font-size: 0.9rem;
+    color: var(--color-table-text);
+    font-weight: 400;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.pagination-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid var(--color-control-border);
+    border-radius: 6px;
+    background-color: var(--color-white);
+    color: var(--color-control-text);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.pagination-btn.active {
+    background-color: var(--color-success-deep);
+    border-color: var(--color-success-deep);
+    color: var(--color-white);
+}
+
+.pagination-btn.disabled {
+    background-color: var(--color-disabled-bg);
+    border-color: var(--color-disabled-border);
+    color: var(--color-disabled-text);
+    cursor: default;
+}
+
+.pagination-btn.arrow {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.pagination-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    color: var(--color-table-text);
+    font-size: 0.8rem;
+}
+
+@media (max-width: 700px) {
+    .recent-transactions-card {
+        overflow-x: auto;
+    }
+
+    .transactions-header,
+    .transactions-table-header,
+    .transaction-row {
+        min-width: 680px;
+    }
+
+    .transactions-header {
+        padding: 0 16px;
+    }
+
+    .transactions-footer {
+        min-width: 680px;
+    }
 }

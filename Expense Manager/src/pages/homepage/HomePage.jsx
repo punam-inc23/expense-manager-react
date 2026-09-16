@@ -4,12 +4,16 @@ import Header from "./components/Header";
 import Dashboard from "../dashboard/Dashboard";
 import { useState } from "react";
 import AddExpense from "../addExpense/AddExpense";
+import Transaction from "../transaction/Transaction";
+import Categories from "../categories/Categories";
+import AddCategory from "../addCategories/AddCategory";
 
 const tabContent = {
     "add-expense": "Add Expense",
     transactions: "Transactions",
     categories: "Categories",
-    settings: "Settings"
+    settings: "Settings",
+    "add-category": "AddCategory"
 };
 
 function HomePage(){
@@ -20,6 +24,12 @@ function HomePage(){
             return <Dashboard />;
         }else if(activeTab === "add-expense"){
             return <AddExpense />
+        } else if (activeTab == "transactions"){
+            return <Transaction onTabChange={setActiveTab} />
+        } else if (activeTab == "categories"){
+            return <Categories onTabChange={setActiveTab} />
+        } else if (activeTab == "add-category"){
+            return <AddCategory onTabChange={setActiveTab} />
         }
 
     };

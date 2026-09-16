@@ -1,0 +1,36 @@
+.color-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    width: 100%;
+}
+
+.color-picker label {
+    font-size: 1rem;
+    color: var(--color-text-dark);
+}
+
+.colors-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
+.color-option {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid var(--color-transparent);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+}
+
+.selected-color {
+    outline: 2px solid var(--color-text-dark);
+    outline-offset: 2px;
+}

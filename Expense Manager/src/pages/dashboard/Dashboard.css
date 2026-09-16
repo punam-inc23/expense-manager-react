@@ -1,0 +1,15 @@
+.dashboard-div{
+    padding: 3rem;
+}
+
+@media (max-width: 900px) {
+    .dashboard-div {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .dashboard-div {
+        padding: 1.25rem 1rem;
+    }
+}

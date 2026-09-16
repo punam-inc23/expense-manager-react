@@ -1,7 +1,14 @@
+:root {
+    --color-surface-soft: #f1f2ff;
+    --color-search-text: #374151;
+    --color-search-placeholder: #8b91a5;
+    --color-danger: #ef4444;
+}
+
 .header {
     height: 5rem;
-    border-bottom: 1px solid #e5e7eb;
-    background-color: #ffffff;
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-white);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -13,7 +20,7 @@
 .search-box {
     width: 30rem;
     height: 2.5rem;
-    background-color: #f1f2ff;
+    background-color: var(--color-surface-soft);
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -31,14 +38,14 @@
 .search-box input {
     border: none;
     outline: none;
-    background: transparent;
+    background: var(--color-transparent);
     width: 100%;
     font-size: 14px;
-    color: #374151;
+    color: var(--color-search-text);
 }
 
 .search-box input::placeholder {
-    color: #8b91a5;
+    color: var(--color-search-placeholder);
 }
 
 .header-right {
@@ -50,7 +57,7 @@
 .notification-btn {
     position: relative;
     border: none;
-    background: transparent;
+    background: var(--color-transparent);
     width: 28px;
     height: 28px;
     padding: 0;
@@ -67,11 +74,11 @@
     position: absolute;
     width: 7px;
     height: 7px;
-    background-color: #ef4444;
+    background-color: var(--color-danger);
     border-radius: 50%;
     top: 2px;
     right: 2px;
-    border: 1px solid white;
+    border: 1px solid var(--color-white);
 }
 
 .profile-image {
@@ -79,4 +86,37 @@
     height: 34px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .header {
+        height: auto;
+        min-height: 4.5rem;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .search-box {
+        width: auto;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .header-right {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 420px) {
+    .search-box {
+        padding: 0 10px;
+    }
+
+    .search-icon {
+        margin-right: 8px;
+    }
+
+    .header-right {
+        gap: 8px;
+    }
 }

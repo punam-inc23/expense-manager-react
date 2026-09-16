@@ -6,6 +6,11 @@
   --label-login: #3D4A3D;
   --placeholder-login: #667085;
   --login-border: #BCCBB9;
+  --color-white: #ffffff;
+  --color-transparent: transparent;
+  --color-surface-muted: #f1f5f9;
+  --color-text-dark: #131b2e;
+  --color-border: #e5e7eb;
 }
 
 *{

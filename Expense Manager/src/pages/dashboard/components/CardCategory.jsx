@@ -7,12 +7,9 @@ function CategoryCard({ category }) {
 
             <div className="category-top">
 
-                <p className="category-name">
-                    {category.name}
-                </p>
+                <p className="category-name">{category.name}</p>
 
-                <div
-                    className="category-icon"
+                <div className="category-icon"
                     style={{
                         backgroundColor: category.iconBackground
                     }}

@@ -1,0 +1,72 @@
+:root {
+    --color-blue-border: #DBEAFE;
+    --color-success-soft: #dcfce7;
+    --color-success-deep: #059669;
+    --color-text-subtle: #475569;
+}
+
+.category-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-blue-border);
+    border-radius: 8px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    width: 100%;
+    min-height: 150px;
+    box-sizing: border-box;
+}
+
+.category-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    /* background-color: #fff1e6; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.category-icon img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.category-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+}
+
+.category-info h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin: 0;
+}
+
+.category-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.expense-badge {
+    background-color: var(--color-success-soft);
+    color: var(--color-success-deep);
+    font-size: 0.85rem;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.category-meta p {
+    font-size: 0.85rem;
+    color: var(--color-text-subtle);
+    margin: 0;
+}

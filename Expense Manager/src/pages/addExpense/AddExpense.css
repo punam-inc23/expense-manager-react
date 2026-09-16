@@ -1,3 +1,14 @@
+:root {
+    --color-page-bg: #f8fafc;
+    --color-text-secondary: #3D4A3D;
+    --color-text-muted: #64748b;
+    --color-input-border: #d1d5db;
+    --color-success-deep: #059669;
+    --color-blue-soft: #EFF6FF;
+    --color-blue-border: #DBEAFE;
+    --color-blue-text: #334155;
+    --color-success: #10B981;
+}
 
 .expense-div {
     display: flex;
@@ -5,7 +16,7 @@
     align-items: center;
     padding: 3rem 10rem;
     gap: 2rem;
-    background-color: #f8fafc;
+    background-color: var(--color-page-bg);
     min-height: 100vh;
 }
 
@@ -19,17 +30,17 @@
 }
 
 .expense-head h1 {
-    font-size: 2.1rem;
-    color: #131B2E;
+    font-size: 1.9rem;
+    color: var(--color-text-dark);
 }
 
 .expense-head p {
-    color: #3D4A3D;
+    color: var(--color-text-secondary);
     font-size: 1.2rem;
 }
 
 .expense-div form {
-    background-color: white;
+    background-color: var(--color-white);
     width: 100%;
     max-width: 750px;
     padding: 2rem;
@@ -38,29 +49,29 @@
     flex-direction: column;
     gap: 1rem;
     border-radius: 25px;
-    border: 2px solid #e5e7eb;
+    border: 2px solid var(--color-border);
     box-sizing: border-box;
 }
 
 .expense-div form > label {
-    font-size: 1.3rem;
-    color: #131B2E;
+    font-size: 1.1rem;
+    color: var(--color-text-dark);
 }
 
 .input-div {
-    background-color: #F1F5F9;
+    background-color: var(--color-surface-muted);
     width: 100%;
     box-sizing: border-box;
     border: none;
     border-radius: 12px;
     padding: 1rem;
-    font-size: 1rem;
-    color: #131B2E;
+    font-size: 0.8rem;
+    color: var(--color-text-dark);
     outline: none;
 }
 
 .input-div:focus {
-    outline: 2px solid #10B981;
+    outline: 2px solid var(--color-success);
 }
 
 .amount-div {
@@ -70,23 +81,46 @@
 }
 
 .amount-div span {
-    color: #64748b;
-    font-size: 1rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
 }
 
 .amount-div input {
     border: none;
     outline: none;
-    background: transparent;
+    background: var(--color-transparent);
     width: 100%;
-    font-size: 1rem;
-    color: #131B2E;
+    font-size: 0.8rem;
+    color: var(--color-text-dark);
+}
+
+.expense-type-options {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.expense-type-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--color-text-dark);
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.expense-type-option input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--color-success);
+    cursor: pointer;
 }
 
 select.input-div {
     appearance: auto;
     cursor: pointer;
-    color: #64748b;
+    color: var(--color-text-muted);
 }
 
 .description-input {
@@ -112,34 +146,34 @@ select.input-div {
 }
 
 .save-btn {
-    background-color: #10B981;
-    color: white;
+    background-color: var(--color-success);
+    color: var(--color-white);
     border: none;
     flex: 1;
 }
 
 .save-btn:hover {
-    background-color: #059669;
+    background-color: var(--color-success-deep);
 }
 
 .cancel-btn {
-    background-color: white;
-    color: #131B2E;
-    border: 1px solid #d1d5db;
+    background-color: var(--color-white);
+    color: var(--color-text-dark);
+    border: 1px solid var(--color-input-border);
     padding-left: 2rem !important;
     padding-right: 2rem !important;
 }
 
 .cancel-btn:hover {
-    background-color: #f1f5f9;
+    background-color: var(--color-surface-muted);
 }
 
 .pro-tip-div {
     width: 100%;
     max-width: 750px;
     box-sizing: border-box;
-    background-color: #EFF6FF;
-    border: 1px solid #DBEAFE;
+    background-color: var(--color-blue-soft);
+    border: 1px solid var(--color-blue-border);
     border-radius: 12px;
     padding: 1rem;
     display: flex;
@@ -162,12 +196,12 @@ select.input-div {
 .pro-tip-head {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #334155;
+    color: var(--color-blue-text);
 }
 
 .pro-tip-subhead {
     font-size: 1rem;
-    color: #64748b;
+    color: var(--color-text-muted);
     line-height: 1.5;
 }
 
