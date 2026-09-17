@@ -24,7 +24,7 @@ function AddCategory({ onTabChange }) {
                 </p>
             </div>
 
-            <CategoryForm />
+            <CategoryForm onSaved={() => onTabChange("categories")} />
 
         </div>
     );

@@ -5,7 +5,7 @@ import profile from "../../../assets/images/profile.png"
 
 
 
-function Header() {
+function Header({ onNotificationClick }) {
     return (
         <header className="header">
 
@@ -24,7 +24,7 @@ function Header() {
 
             <div className="header-right">
 
-                <button className="notification-btn">
+                <button className="notification-btn" onClick={onNotificationClick}>
                     <img
                         src={notification}
                         alt="notification"

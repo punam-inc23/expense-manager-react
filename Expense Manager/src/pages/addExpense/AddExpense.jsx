@@ -2,18 +2,18 @@ import "../addExpense/AddExpense.css";
 import pro_tip from "../../assets/icons/tip.png";
 import AddExpenseForm from "./components/AddExpenseForm";
 
-function AddExpense() {
+function AddExpense({ expenseToEdit, onSaved }) {
     return (
         <div className="expense-div">
 
             <div className="expense-head">
-                <h1>Add New Expense</h1>
+                <h1>{expenseToEdit ? "Edit Expense" : "Add New Expense"}</h1>
                 <p>
                     Keep track of your academic and personal spending to stay on budget.
                 </p>
             </div>
 
-            <AddExpenseForm />
+            <AddExpenseForm expenseToEdit={expenseToEdit} onSaved={onSaved} />
             
             <div className="pro-tip-div">
                 <img src={pro_tip} alt="Pro Tip" />

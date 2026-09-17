@@ -1,0 +1,14 @@
+.utility-page { padding: 2rem; color: var(--color-text-dark); }
+.utility-heading h1 { margin: 0; font-size: 1.8rem; }
+.utility-heading p { margin: .5rem 0 1.5rem; color: var(--sub-head); }
+.settings-list, .notification-list { max-width: 850px; background: var(--color-white); border: 1px solid var(--color-border); border-radius: 12px; overflow: hidden; }
+.settings-row { display: flex; justify-content: space-between; gap: 1rem; padding: 1.1rem 1.3rem; border-bottom: 1px solid var(--color-border); }
+.settings-row:last-child { border-bottom: 0; }
+.settings-row div { display: grid; gap: .35rem; }
+.settings-row span { color: var(--sub-head); font-size: .85rem; }
+.settings-row b { color: var(--primary-color); font-size: .9rem; }
+.notification-item { display: flex; gap: .8rem; padding: 1rem 1.3rem; border-bottom: 1px solid var(--color-border); }
+.notification-item:last-child { border-bottom: 0; }
+.notification-item strong { display: block; }
+.notification-item span { color: var(--sub-head); font-size: .85rem; }
+@media (max-width: 600px) { .utility-page { padding: 1rem; } .settings-row { align-items: flex-start; flex-direction: column; } }

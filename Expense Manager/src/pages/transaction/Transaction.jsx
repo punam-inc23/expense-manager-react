@@ -1,9 +1,11 @@
+import { useState } from "react";
 import "../transaction/Transaction.css"
 import add_icon from "../../assets/icons/add.png"
 import TransactionFilter from "./components/TransactionFilter";
 import RecentTransactions from "../dashboard/components/RecentTransactions";
 
-function Transaction({ onTabChange }){
+function Transaction({ onTabChange, onEdit }){
+    const [filters, setFilters] = useState({ search: "", dateRange: "all", category: "all" });
     return(
         <div className="transaction-main">
             <div className="transaction-head">
@@ -18,11 +20,13 @@ function Transaction({ onTabChange }){
                     Add New Expense
                 </button>
             </div>
-            <TransactionFilter />
+            <TransactionFilter filters={filters} onChange={setFilters} />
             <RecentTransactions
                 showHeader={false}
                 showViewAll={false}
                 showPagination={true}
+                onEdit={onEdit}
+                filters={filters}
             />
         </div>
     )

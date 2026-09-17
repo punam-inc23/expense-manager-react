@@ -1,38 +1,43 @@
 import { useState } from "react";
 import "../../addExpense/AddExpense.css";
-import { addUserExpense } from "../../../utils/userStorage";
+import { addUserExpense, updateUserExpense,getCategory } from "../../../utils/userStorage";
 
 
-function AddExpenseForm() {
+const emptyExpense = {
+    title: "",
+    amount: 0,
+    category: "",
+    description: "",
+    transactionType: "sent"
+};
 
-    const [expense, setExpense] = useState({
-        title:"",
-        amount: 0,
-        category: "",
-        description: "",
-        transactionType: "sent"
-    })
+function AddExpenseForm({ expenseToEdit, onSaved }) {
+
+    const [expense, setExpense] = useState(() => expenseToEdit || emptyExpense);
+
+    const [categories, setCategories] = useState(() => getCategory());
 
     const saveExpense = (event)=>{
         event.preventDefault();
 
-        const saved = addUserExpense({
-            ...expense,
-            id: Date.now(),
-            createdAt: new Date().toISOString()
-        });
+        const saved = expenseToEdit
+            ? updateUserExpense(expenseToEdit.id, expense)
+            : addUserExpense({
+                ...expense,
+                id: Date.now(),
+                createdAt: new Date().toISOString()
+            });
 
-        if (!saved) {
+        if (saved === undefined || saved === false) {
             alert("Please log in before saving an expense");
+            return;
         }
 
-        setExpense({
-            title: "",
-            amount: 0,
-            category: "",
-            description: "",
-            transactionType: "sent"
-        });
+        if (expenseToEdit) {
+            onSaved?.();
+        } else {
+            setExpense(emptyExpense);
+        }
 
     }
 
@@ -75,22 +80,25 @@ function AddExpenseForm() {
                 id="category"
                 className="input-div"
                 value={expense.category}
-                onChange={(event) => setExpense({
-                    ...expense,
-                    category: event.target.value
-                })}
+                onChange={(event) =>
+                    setExpense({
+                        ...expense,
+                        category: Number(event.target.value)
+                    })
+                }
             >
                 <option value="" disabled>
                     Select category
                 </option>
-                <option value="Food & Drink">Food & Drink</option>
-                <option value="Education">Education</option>
-                <option value="Income">Income</option>
-                <option value="Housing">Housing</option>
-                <option value="Groceries">Groceries</option>
-                <option value="Entertainment">Entertainment</option>
-                <option value="Transport">Transport</option>
-                <option value="Shopping">Shopping</option>
+
+                {categories.map((category) => (
+                    <option
+                        key={category.id}
+                        value={category.id}
+                    >
+                        {category.name}
+                    </option>
+                ))}
             </select>
 
             <div className="expense-type-options">

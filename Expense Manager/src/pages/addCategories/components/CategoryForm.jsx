@@ -1,10 +1,27 @@
 import IconSelector from "./IconSelector";
 import ColorPicker from "./ColorPicker";
 import "./CategoryForm.css";
+import { useState } from "react";
+import { addCategory } from "../../../utils/userStorage";
 
-function CategoryForm() {
+const emptyCategory = { name: "", icon: 0, color: "" };
+
+function CategoryForm({ onSaved }) {
+
+    const [category, setCategory] = useState(emptyCategory);
+
+    const handleCategory=(event)=>{
+        event.preventDefault();
+        const saved = addCategory(category);
+
+        if (saved) {
+            setCategory(emptyCategory);
+            onSaved?.();
+        }
+    }
+
     return (
-        <form className="category-form">
+        <form onSubmit={handleCategory} className="category-form">
 
             <div className="form-group">
                 <label htmlFor="categoryName">Category Name</label>
@@ -13,12 +30,34 @@ function CategoryForm() {
                     type="text"
                     id="categoryName"
                     placeholder="e.g., Monthly Subscriptions"
+                    value={category.name}
+                    onChange={(event)=>(setCategory({
+                        ...category,
+                        name: event.target.value
+                    })
+                )}
                 />
             </div>
 
-            <IconSelector />
+            <IconSelector
+                selectedIcon={category.icon}
+                setSelectedIcon={(icon) =>
+                    setCategory({
+                        ...category,
+                        icon: icon
+                    })
+                }
+            />
 
-            <ColorPicker />
+            <ColorPicker
+                selectedColor={category.color}
+                setSelectedColor={(color) =>
+                    setCategory({
+                        ...category,
+                        color: color
+                    })
+                }
+            />
 
             <div className="category-form-buttons">
 

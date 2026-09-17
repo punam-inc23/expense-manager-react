@@ -4,12 +4,12 @@ import CategoryCards from "./components/CategoryCards";
 import MonthlySpending from "./components/MonthlySpending";
 import RecentTransactions from "./components/RecentTransactions";
 
-function Dashboard() {
+function Dashboard({ onEdit, onViewAll }) {
     return (
         <div className="dashboard-div">
-            <CategoryCards />
+            <CategoryCards limit={4} />
             <MonthlySpending />
-            <RecentTransactions limit={5} />
+            <RecentTransactions limit={5} onEdit={onEdit} onViewAll={onViewAll} />
         </div>
     )
 }

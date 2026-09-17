@@ -1,52 +1,40 @@
 
-import food from "../../../assets/icons/food.png";
-import travel from "../../../assets/icons/travel.png";
-import tuition from "../../../assets/icons/tuition.png";
 import CategoryCard from "./CategoryCard";
 
 import "./CategoryCards.css";
 import NewCategoryCard from "./NewCategoryCard";
+import { getCategory, getUser } from "../../../utils/userStorage";
 
-function CategoryCards() {
+function CategoryCards({ onAddCategory, limit = null }) {
+    const user = getUser();
+    const expenses = Array.isArray(user?.expense) ? user.expense : [];
+    const categories = getCategory();
 
-    const categories = [
-        {
-            id: 1,
-            name: "Food & Dining",
-            icon: food,
-            transactions: 12,
-            iconBackground: "#fff0dc"
-        },
-        {
-            id: 2,
-            name: "Travel",
-            icon: travel,
-            transactions: 4,
-            iconBackground: "#e2edff"
-        },
-        {
-            id: 3,
-            name: "Tuition & Fees",
-            icon: tuition,
-            transactions: 1,
-            iconBackground: "#f0e4ff"
-        }
-    ];
+    const categoryCards = categories.map((category) => ({
+        ...category,
+        transactions: expenses.filter(
+            (expense) => expense.category === category.id && expense.transactionType !== "received"
+        ).length
+    }));
+
+    const visibleCategories = limit
+        ? categoryCards.filter((category) => category.transactions > 0).slice(0, limit)
+        : categoryCards;
 
     return (
         <div className="categories-grid">
 
-            {categories.map((category) => (
+            {visibleCategories.map((category) => (
                 <CategoryCard
                     key={category.id}
                     icon={category.icon}
                     name={category.name}
                     transactions={category.transactions}
-                    bgColor={category.iconBackground}
+                    bgColor={category.color}
                 />
             ))}
 
-            <NewCategoryCard />
+            {!limit && <NewCategoryCard onClick={onAddCategory} />}
 
         </div>
     );

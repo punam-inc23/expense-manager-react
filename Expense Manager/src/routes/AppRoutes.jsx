@@ -1,23 +1,31 @@
-import { Routes, Route } from "react-router-dom";
+import { Navigate, Routes, Route } from "react-router-dom";
 
 import Login from "../pages/login/Login";
 import Dashboard from "../pages/dashboard/Dashboard";
 import HomePage from "../pages/homepage/HomePage";
 import AddExpense from "../pages/addExpense/AddExpense";
+import Signup from "../pages/signup/Signup";
+import { isLoggedIn } from "../utils/userStorage";
 
 function AppRoutes() {
+    const defaultRoute = isLoggedIn() ? "/homepage" : "/login";
 
     return (
         <Routes>
 
             <Route
                 path="/"
-                element={<Login />}
+                element={<Navigate to={defaultRoute} replace />}
             />
 
             <Route
                 path="/login"
                 element={<Login />}
+            />
+
+            <Route
+                path="/signup"
+                element={<Signup />}
             />
 
             <Route

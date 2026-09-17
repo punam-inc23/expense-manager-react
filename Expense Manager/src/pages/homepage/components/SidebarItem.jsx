@@ -43,7 +43,7 @@ function SidebarItem({ activeTab, onTabChange }) {
                     <button
                         type="button"
                         key={index}
-                        className={`sidebar-link ${activeTab === item.tab ? "active" : ""}`}
+                        className={`sidebar-link ${(activeTab === item.tab || (activeTab === "add-category" && item.tab === "categories")) ? "active" : ""}`}
                         onClick={() => onTabChange(item.tab)}
                     >
 

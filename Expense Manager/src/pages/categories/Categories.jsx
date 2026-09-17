@@ -17,7 +17,7 @@ function Categories({onTabChange}){
                     Add New Category
                 </button>
             </div>
-            <CategoryCards />
+            <CategoryCards onAddCategory={() => onTabChange("add-category")} />
         </div>
     )
 }

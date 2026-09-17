@@ -33,12 +33,14 @@
 }
 
 .category-icon {
+    --category-color: #e5e7eb;
     width: 42px;
     height: 42px;
     border-radius: 11px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: color-mix(in srgb, var(--category-color) 16%, transparent);
 }
 
 .category-icon img {

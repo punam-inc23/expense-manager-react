@@ -1,44 +1,70 @@
 import "./RecentTransactions.css";
-import { getUser } from "../../../utils/userStorage";
+import { useState } from "react";
+import { getUser, removeExpense, getCategory } from "../../../utils/userStorage";
 
-import food_drink from "../../../assets/icons/food&drink.png";
-import education from "../../../assets/icons/education.png";
-import income from "../../../assets/icons/income.png";
-import housing from "../../../assets/icons/housing.png";
-import groceries from "../../../assets/icons/groceries.png";
-import entertainment from "../../../assets/icons/entertainment.png"
-import transport from "../../../assets/icons/transport.png";
-import shopping from "../../../assets/icons/shopping.png";
+import cart from "../../../assets/icons/category/cart.png"
+import utensils from "../../../assets/icons/category/utensils.png"
+import travel from "../../../assets/icons/category/travel.png"
+import tuition from "../../../assets/icons/category/tuition.png"
+import heart from "../../../assets/icons/category/heart.png"
+import home from "../../../assets/icons/category/home.png"
+import transfer from "../../../assets/icons/category/transfer.png"
+import wallet from "../../../assets/icons/category/wallet.png"
+
 
 import deleteIcon from "../../../assets/icons/delete.png";
 import editIcon from "../../../assets/icons/edit.png";
 
 const categoryIcons = {
-    "Food & Drink": food_drink,
-    Education: education,
-    Income: income,
-    Housing: housing,
-    Groceries: groceries,
-    Entertainment: entertainment,
-    Transport: transport,
-    Shopping: shopping
+    1: cart,
+    2: utensils,
+    3: travel,
+    4: tuition,
+    5: heart,
+    6: home,
+    7: transfer,
+    8: wallet
 };
 
-function RecentTransactions({limit = null, showHeader = true, showViewAll = true, showPagination = false}) {
 
-    const user = getUser();
-    const savedExpenses = Array.isArray(user?.expense)
-        ? user.expense
-        : user?.expense
-            ? [user.expense]
-            : [];
+function RecentTransactions({limit = null, showHeader = true, showViewAll = true, showPagination = false, onEdit, onViewAll, filters = {}}) {
 
-    const transactions = savedExpenses.map((expense) => {
+    const [savedExpenses, setSavedExpenses] = useState(() => {
+        const user = getUser();
+
+        if (Array.isArray(user?.expense)) {
+            return user.expense;
+        }
+
+        return user?.expense ? [user.expense] : [];
+    });
+
+    const [categories] = useState(() => getCategory());
+
+    const filteredExpenses = savedExpenses.filter((expense) => {
+        const search = (filters.search || "").toLowerCase().trim();
+        const categoryFilter = filters.category || "all";
+        const dateRange = filters.dateRange || "all";
+        const matchesSearch = !search || `${expense.title || ""} ${expense.description || ""}`.toLowerCase().includes(search);
+        const matchesCategory = categoryFilter === "all" || String(expense.category) === String(categoryFilter);
+        const age = dateRange !== "all"
+            ? (Date.now() - new Date(expense.createdAt).getTime()) / 86400000
+            : 0;
+        const matchesDate = dateRange === "all" || age <= Number(dateRange);
+
+        return matchesSearch && matchesCategory && matchesDate;
+    });
+
+    const transactions = filteredExpenses.map((expense) => {
         const isReceived = expense.transactionType === "received";
         const amount = Math.abs(Number(expense.amount) || 0).toFixed(2);
+        const category = categories.find(
+            (category) => String(category.id) === String(expense.category)
+        );
 
         return {
             id: expense.id,
+            expense,
             date: expense.createdAt
                 ? new Date(expense.createdAt).toLocaleDateString("en-IN", {
                     day: "2-digit",
@@ -47,10 +73,11 @@ function RecentTransactions({limit = null, showHeader = true, showViewAll = true
                 })
                 : "Date unavailable",
             merchant: expense.title,
-            category: expense.category,
+            category: category?.name || "Unknown",
+            color: category?.color || "#e5e7eb",
             amount: `${isReceived ? "+" : "-"}₹${amount}`,
             type: isReceived ? "income" : "expense",
-            icon: categoryIcons[expense.category]
+            icon: categoryIcons[category?.icon]
         };
     }).reverse();
 
@@ -65,17 +92,24 @@ function RecentTransactions({limit = null, showHeader = true, showViewAll = true
             .replace(/ /g, "-");
     };
 
+    const removeItem = (id) => {
+
+        const updatedExpenses = removeExpense(id);
+
+        if (updatedExpenses !== undefined) {
+            setSavedExpenses(updatedExpenses);
+        }
+    };
 
     return (
         <div className="recent-transactions-card">
 
             {showHeader && (
                 <div className="transactions-header">
-
                     <h3>Recent Transactions</h3>
 
                     {showViewAll && (
-                        <button className="view-all-btn">
+                        <button className="view-all-btn" type="button" onClick={onViewAll}>
                             View All
                         </button>
                     )}
@@ -93,6 +127,12 @@ function RecentTransactions({limit = null, showHeader = true, showViewAll = true
 
             <div className="transactions-list">
 
+                {displayedTransactions.length === 0 && (
+                    <div className="transactions-empty">
+                        No transactions yet
+                    </div>
+                )}
+
                 {displayedTransactions.map((transaction) => {
 
                     const categoryClass = getCategoryClass(transaction.category || "other");
@@ -106,7 +146,12 @@ function RecentTransactions({limit = null, showHeader = true, showViewAll = true
                             <div className="transaction-date">{transaction.date}</div>
 
                             <div className="merchant-details">
-                                <div className={`merchant-icon ${categoryClass}`} >
+                                <div
+                                    className={`merchant-icon ${categoryClass}`}
+                                    style={{
+                                        "--category-color": transaction.color
+                                    }}
+                                >
                                     {transaction.icon && (
                                         <img src={transaction.icon} alt={transaction.category} className="merchant-icon-img"/>
                                     )}
@@ -119,15 +164,18 @@ function RecentTransactions({limit = null, showHeader = true, showViewAll = true
 
                             <div className="transaction-category">
 
-                                <span className={`category-badge ${categoryClass}`}>
+                                <span
+                                    className="category-badge"
+                                    style={{
+                                        "--category-color": transaction.color
+                                    }}
+                                >
                                     {transaction.category}
                                 </span>
 
                             </div>
 
-                            <div
-                                className={`transaction-amount ${transaction.type}`}
-                            >
+                            <div className={`transaction-amount ${transaction.type}`}>
                                 {transaction.amount}
                             </div>
 
@@ -135,7 +183,7 @@ function RecentTransactions({limit = null, showHeader = true, showViewAll = true
 
                                 <button className="action-btn" title="Edit"
                                     onClick={() =>
-                                        console.log("Edit:",transaction.id)
+                                        onEdit?.(transaction.expense)
                                     }
                                 >
 
@@ -143,22 +191,14 @@ function RecentTransactions({limit = null, showHeader = true, showViewAll = true
                                 </button>
 
 
-                                <button
-                                    className="action-btn"
-                                    title="Delete"
+                                <button className="action-btn" title="Delete"
                                     onClick={() =>
-                                        console.log(
-                                            "Delete:",
-                                            transaction.id
-                                        )
+                                        removeItem(transaction.id)
+                                        // console.log("Delete:", transaction.id)
                                     }
                                 >
 
-                                    <img
-                                        src={deleteIcon}
-                                        alt="Delete"
-                                        className="action-icon"
-                                    />
+                                    <img src={deleteIcon} alt="Delete" className="action-icon" />
 
                                 </button>
 

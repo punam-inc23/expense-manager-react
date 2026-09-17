@@ -5,7 +5,7 @@ import lockIcon from "../../assets/icons/lock.png";
 import googleIcon from "../../assets/images/google.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { saveUser } from "../../utils/userStorage";
+import { authenticateUser } from "../../utils/userStorage";
 
 function Login(){
 
@@ -21,16 +21,12 @@ function Login(){
             return;
         }
 
-        const userData = {
-            username: username,
-            isLoggedIn: true
-        };
+        const userData = authenticateUser(username, password);
 
-        // localStorage.setItem("user", JSON.stringify(userData));
-        saveUser(userData);
-
-        console.log("Login successful");
-        console.log("Stored user:", userData);
+        if (!userData) {
+            alert("Incorrect username or password");
+            return;
+        }
 
         navigate("/homepage");
     };
@@ -87,7 +83,7 @@ function Login(){
                 </form>
             </div>
 
-            <p className="sinup-option">Don't have an account? <span> Sign Up for Free</span></p>
+            <p className="sinup-option">Don't have an account? <span onClick={() => navigate("/signup")}>Sign Up for Free</span></p>
 
         </div>
     )

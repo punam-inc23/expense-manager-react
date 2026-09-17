@@ -114,6 +114,15 @@
     border-bottom: none;
 }
 
+.transactions-empty {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-table-text);
+    font-size: 0.9rem;
+}
+
 .transaction-row:hover {
     background-color: var(--color-row-hover);
 }
@@ -132,6 +141,7 @@
 }
 
 .merchant-icon {
+    --category-color: #e5e7eb;
     width: 32px;
     height: 32px;
     min-width: 32px;
@@ -141,6 +151,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    background-color: color-mix(in srgb, var(--category-color) 18%, transparent);
     box-sizing: border-box;
 }
 
@@ -152,35 +163,35 @@
     flex-shrink: 0;
 }
 .merchant-icon.food-drink {
-    background-color: var(--color-category-food-bg);
+    background-color: color-mix(in srgb, var(--category-color) 18%, transparent);
 }
 
 .merchant-icon.education {
-    background-color: var(--color-category-education-bg);
+    background-color: color-mix(in srgb, var(--category-color) 18%, transparent);
 }
 
 .merchant-icon.income {
-    background-color: var(--color-category-income-bg);
+    background-color: color-mix(in srgb, var(--category-color) 18%, transparent);
 }
 
 .merchant-icon.housing {
-    background-color: var(--color-category-housing-bg);
+    background-color: color-mix(in srgb, var(--category-color) 18%, transparent);
 }
 
 .merchant-icon.groceries {
-    background-color: var(--color-category-groceries-bg);
+    background-color: color-mix(in srgb, var(--category-color) 18%, transparent);
 }
 
 .merchant-icon.entertainment {
-    background-color: var(--color-category-entertainment-bg);
+    background-color: color-mix(in srgb, var(--category-color) 18%, transparent);
 }
 
 .merchant-icon.transport {
-    background-color: var(--color-category-transport-bg);
+    background-color: color-mix(in srgb, var(--category-color) 18%, transparent);
 }
 
 .merchant-icon.shopping {
-    background-color: var(--color-category-neutral-bg);
+    background-color: color-mix(in srgb, var(--category-color) 18%, transparent);
 }
 
 .transaction-category {
@@ -189,6 +200,7 @@
 }
 
 .category-badge {
+    --category-color: #e5e7eb;
     display: inline-flex;
     align-items: center;
     padding: 4px 9px;
@@ -196,45 +208,46 @@
     font-size: 0.9rem;
     font-weight: 500;
     white-space: nowrap;
+    background-color: color-mix(in srgb, var(--category-color) 16%, transparent);
 }
 
 .category-badge.food-drink {
-    background-color: var(--color-badge-food-bg);
+    background-color: color-mix(in srgb, var(--category-color) 16%, transparent);
     color: var(--color-category-food);
 }
 
 .category-badge.education {
-    background-color: var(--color-badge-education-bg);
+    background-color: color-mix(in srgb, var(--category-color) 16%, transparent);
     color: var(--color-category-education);
 }
 
 .category-badge.income {
-    background-color: var(--color-badge-income-bg);
+    background-color: color-mix(in srgb, var(--category-color) 16%, transparent);
     color: var(--color-category-income);
 }
 
 .category-badge.housing {
-    background-color: var(--color-badge-housing-bg);
+    background-color: color-mix(in srgb, var(--category-color) 16%, transparent);
     color: var(--color-category-housing);
 }
 
 .category-badge.groceries {
-    background-color: var(--color-badge-groceries-bg);
+    background-color: color-mix(in srgb, var(--category-color) 16%, transparent);
     color: var(--color-category-groceries);
 }
 
 .category-badge.entertainment {
-    background-color: var(--color-badge-entertainment-bg);
+    background-color: color-mix(in srgb, var(--category-color) 16%, transparent);
     color: var(--color-category-entertainment);
 }
 
 .category-badge.transport {
-    background-color: var(--color-badge-transport-bg);
+    background-color: color-mix(in srgb, var(--category-color) 16%, transparent);
     color: var(--color-category-transport);
 }
 
 .category-badge.shopping {
-    background-color: var(--color-category-neutral-bg);
+    background-color: color-mix(in srgb, var(--category-color) 16%, transparent);
     color: var(--color-category-neutral);
 }
 

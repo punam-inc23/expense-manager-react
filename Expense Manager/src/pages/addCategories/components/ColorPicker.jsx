@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ColorPicker.css";
 
-function ColorPicker() {
+function ColorPicker({ selectedColor, setSelectedColor }) {
 
     const colors = [
         "#0DA66F",
@@ -11,8 +11,6 @@ function ColorPicker() {
         "#F59E0B",
         "#EF4444"
     ];
-
-    const [selectedColor, setSelectedColor] = useState("#0DA66F");
 
     return (
         <div className="color-picker">

@@ -1,8 +1,8 @@
 import "./NewCategoryCard.css";
 
-function NewCategoryCard() {
+function NewCategoryCard({ onClick }) {
     return (
-        <div className="new-category-card">
+        <button type="button" className="new-category-card" onClick={onClick}>
 
             <div className="new-category-icon">
                 +
@@ -10,7 +10,7 @@ function NewCategoryCard() {
 
             <p>Create Category</p>
 
-        </div>
+        </button>
     );
 }
 

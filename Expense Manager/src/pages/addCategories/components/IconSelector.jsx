@@ -10,7 +10,7 @@ import transfer from "../../../assets/icons/category/transfer.png"
 import wallet from "../../../assets/icons/category/wallet.png"
 
 
-function IconSelector() {
+function IconSelector({ selectedIcon, setSelectedIcon }) {
 
     const icons = [
         { id: 1, name: cart },
@@ -22,8 +22,6 @@ function IconSelector() {
         { id: 7, name: transfer },
         { id: 8, name: wallet }
     ];
-
-    const [selectedIcon, setSelectedIcon] = useState(2);
 
     return (
         <div className="icon-selector">
