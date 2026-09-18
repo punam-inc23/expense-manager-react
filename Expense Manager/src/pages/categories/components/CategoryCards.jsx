@@ -3,12 +3,12 @@ import CategoryCard from "./CategoryCard";
 
 import "./CategoryCards.css";
 import NewCategoryCard from "./NewCategoryCard";
-import { getCategory, getUser } from "../../../utils/userStorage";
+import useExpenses from "../../../hooks/useExpenses";
+import useCategories from "../../../hooks/useCategories";
 
 function CategoryCards({ onAddCategory, limit = null }) {
-    const user = getUser();
-    const expenses = Array.isArray(user?.expense) ? user.expense : [];
-    const categories = getCategory();
+    const { expenses } = useExpenses();
+    const { categories } = useCategories();
 
     const categoryCards = categories.map((category) => ({
         ...category,

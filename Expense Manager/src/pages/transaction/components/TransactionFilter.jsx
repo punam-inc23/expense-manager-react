@@ -1,10 +1,10 @@
 import search from "../../../assets/icons/search.png"
 import download from "../../../assets/icons/download.png"
-import { getCategory } from "../../../utils/userStorage";
+import useCategories from "../../../hooks/useCategories";
 import "../components/TransactionFilter.css"
 
 function TransactionFilter({ filters, onChange }){
-    const categories = getCategory();
+    const { categories } = useCategories();
     const updateFilter = (key, value) => onChange({ ...filters, [key]: value });
     return(
         <div className="transaction-filter">

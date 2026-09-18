@@ -2,22 +2,20 @@ import IconSelector from "./IconSelector";
 import ColorPicker from "./ColorPicker";
 import "./CategoryForm.css";
 import { useState } from "react";
-import { addCategory } from "../../../utils/userStorage";
+import useCategories from "../../../hooks/useCategories";
 
 const emptyCategory = { name: "", icon: 0, color: "" };
 
 function CategoryForm({ onSaved }) {
 
     const [category, setCategory] = useState(emptyCategory);
+    const { addCategory } = useCategories();
 
     const handleCategory=(event)=>{
         event.preventDefault();
-        const saved = addCategory(category);
-
-        if (saved) {
-            setCategory(emptyCategory);
-            onSaved?.();
-        }
+        addCategory({ ...category, id: Date.now() });
+        setCategory(emptyCategory);
+        onSaved?.();
     }
 
     return (

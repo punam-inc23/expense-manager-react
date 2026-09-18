@@ -6,6 +6,7 @@ import googleIcon from "../../assets/images/google.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authenticateUser } from "../../utils/userStorage";
+import { loadUserData } from "../../redux/store";
 
 function Login(){
 
@@ -28,6 +29,7 @@ function Login(){
             return;
         }
 
+        loadUserData(userData);
         navigate("/homepage");
     };
 

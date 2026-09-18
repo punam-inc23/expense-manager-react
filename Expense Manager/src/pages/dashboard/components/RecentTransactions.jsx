@@ -1,6 +1,7 @@
 import "./RecentTransactions.css";
 import { useState } from "react";
-import { getUser, removeExpense, getCategory } from "../../../utils/userStorage";
+import useExpenses from "../../../hooks/useExpenses";
+import useCategories from "../../../hooks/useCategories";
 
 import cart from "../../../assets/icons/category/cart.png"
 import utensils from "../../../assets/icons/category/utensils.png"
@@ -28,18 +29,9 @@ const categoryIcons = {
 
 
 function RecentTransactions({limit = null, showHeader = true, showViewAll = true, showPagination = false, onEdit, onViewAll, filters = {}}) {
-
-    const [savedExpenses, setSavedExpenses] = useState(() => {
-        const user = getUser();
-
-        if (Array.isArray(user?.expense)) {
-            return user.expense;
-        }
-
-        return user?.expense ? [user.expense] : [];
-    });
-
-    const [categories] = useState(() => getCategory());
+    const [currentTime] = useState(() => Date.now());
+    const { expenses: savedExpenses, removeExpense } = useExpenses();
+    const { categories } = useCategories();
 
     const filteredExpenses = savedExpenses.filter((expense) => {
         const search = (filters.search || "").toLowerCase().trim();
@@ -48,7 +40,7 @@ function RecentTransactions({limit = null, showHeader = true, showViewAll = true
         const matchesSearch = !search || `${expense.title || ""} ${expense.description || ""}`.toLowerCase().includes(search);
         const matchesCategory = categoryFilter === "all" || String(expense.category) === String(categoryFilter);
         const age = dateRange !== "all"
-            ? (Date.now() - new Date(expense.createdAt).getTime()) / 86400000
+            ? (currentTime - new Date(expense.createdAt).getTime()) / 86400000
             : 0;
         const matchesDate = dateRange === "all" || age <= Number(dateRange);
 
@@ -94,11 +86,7 @@ function RecentTransactions({limit = null, showHeader = true, showViewAll = true
 
     const removeItem = (id) => {
 
-        const updatedExpenses = removeExpense(id);
-
-        if (updatedExpenses !== undefined) {
-            setSavedExpenses(updatedExpenses);
-        }
+        removeExpense(id);
     };
 
     return (

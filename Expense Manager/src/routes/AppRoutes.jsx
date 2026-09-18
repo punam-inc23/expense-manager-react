@@ -1,17 +1,20 @@
+import { lazy, Suspense } from "react";
 import { Navigate, Routes, Route } from "react-router-dom";
 
-import Login from "../pages/login/Login";
-import Dashboard from "../pages/dashboard/Dashboard";
-import HomePage from "../pages/homepage/HomePage";
-import AddExpense from "../pages/addExpense/AddExpense";
-import Signup from "../pages/signup/Signup";
 import { isLoggedIn } from "../utils/userStorage";
+
+const Login = lazy(() => import("../pages/login/Login"));
+const Dashboard = lazy(() => import("../pages/dashboard/Dashboard"));
+const HomePage = lazy(() => import("../pages/homepage/HomePage"));
+const AddExpense = lazy(() => import("../pages/addExpense/AddExpense"));
+const Signup = lazy(() => import("../pages/signup/Signup"));
 
 function AppRoutes() {
     const defaultRoute = isLoggedIn() ? "/homepage" : "/login";
 
     return (
-        <Routes>
+        <Suspense fallback={<div className="route-loading">Loading...</div>}>
+            <Routes>
 
             <Route
                 path="/"
@@ -58,7 +61,8 @@ function AppRoutes() {
                 element={<Settings />}
             /> */}
 
-        </Routes>
+            </Routes>
+        </Suspense>
     );
 }
 

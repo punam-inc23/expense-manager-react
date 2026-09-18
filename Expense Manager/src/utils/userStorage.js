@@ -1,5 +1,12 @@
 export const saveUser = (userData) => {
-    localStorage.setItem("user", JSON.stringify(userData));
+    const users = getRegisteredUsers();
+    const updatedUsers = users.map((user) =>
+        user.username.toLowerCase() === userData.username.toLowerCase()
+            ? userData
+            : user
+    );
+
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
 };
 
 export const getRegisteredUsers = () => {
@@ -17,7 +24,10 @@ export const registerUser = (userData) => {
         return false;
     }
 
-    localStorage.setItem("users", JSON.stringify([...users, userData]));
+    localStorage.setItem("users", JSON.stringify([
+        ...users,
+        { ...userData, category: [], expense: [], isLoggedIn: false }
+    ]));
     return true;
 };
 
@@ -33,157 +43,90 @@ export const authenticateUser = (username, password) => {
     }
 
     const loggedInUser = { ...user, isLoggedIn: true };
+    const updatedUsers = getRegisteredUsers().map((registeredUser) => ({
+        ...registeredUser,
+        isLoggedIn: registeredUser.username.toLowerCase() === username.toLowerCase()
+    }));
+
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
     saveUser(loggedInUser);
     return loggedInUser;
 };
 
 export const getUser = () => {
-
-    const user = localStorage.getItem("user");
-
-    if (!user) {
-        return null;
-    }
-
-    return JSON.parse(user);
+    return getRegisteredUsers().find((user) => user.isLoggedIn === true) || null;
 };
 
 
 export const removeUser = () => {
-    localStorage.removeItem("user");
+    const users = getRegisteredUsers().map((user) => ({
+        ...user,
+        isLoggedIn: false
+    }));
+
+    localStorage.setItem("users", JSON.stringify(users));
 };
 
 
 export const isLoggedIn = () => {
-
-    const user = localStorage.getItem("user");
-
-    if (!user) {
-        return false;
-    }
-
-    return JSON.parse(user).isLoggedIn === true;
+    return getUser() !== null;
 };
 
 
+/*
 export const addUserExpense = (expense) => {
     const user = getUser();
-
-    if (!user) {
-        return false;
-    }
+    if (!user) return false;
 
     const savedExpenses = Array.isArray(user.expense)
         ? user.expense
-        : user.expense
-            ? [user.expense]
-            : [];
+        : user.expense ? [user.expense] : [];
 
-    saveUser({
-        ...user,
-        expense: [...savedExpenses, expense]
-    });
-
+    saveUser({ ...user, expense: [...savedExpenses, expense] });
     return true;
 };
 
-
 export const updateUserExpense = (expenseId, updatedExpense) => {
     const user = getUser();
-
-    if (!user) {
-        return;
-    }
+    if (!user) return;
 
     const savedExpenses = Array.isArray(user.expense)
         ? user.expense
-        : user.expense
-            ? [user.expense]
-            : [];
+        : user.expense ? [user.expense] : [];
 
-    const updatedExpenses = savedExpenses.map((expense) => {
-        if (expense.id !== expenseId) {
-            return expense;
-        }
+    const updatedExpenses = savedExpenses.map((expense) => expense.id === expenseId
+        ? { ...expense, ...updatedExpense, id: expense.id, createdAt: expense.createdAt }
+        : expense);
 
-        return {
-            ...expense,
-            ...updatedExpense,
-            id: expense.id,
-            createdAt: expense.createdAt
-        };
-    });
-
-    saveUser({
-        ...user,
-        expense: updatedExpenses
-    });
-
+    saveUser({ ...user, expense: updatedExpenses });
     return updatedExpenses;
 };
 
-
-
-
 export const removeExpense = (expenseId) => {
-
     const user = getUser();
-
-    if (!user) {
-        return;
-    }
+    if (!user) return;
 
     const updatedExpenses = Array.isArray(user.expense)
-        ? user.expense.filter(
-            (expense) => expense.id !== expenseId
-        )
+        ? user.expense.filter((expense) => expense.id !== expenseId)
         : [];
 
-    const updatedUser = {
-        ...user,
-        expense: updatedExpenses
-    };
-
-    saveUser(updatedUser);
-
+    saveUser({ ...user, expense: updatedExpenses });
     return updatedExpenses;
 };
 
 export const addCategory = (category) => {
-
     const user = getUser();
+    if (!user) return false;
 
-    if (!user) {
-        return false;
-    }
+    const savedCategories = Array.isArray(user.category) ? user.category : [];
+    const newCategory = { ...category, id: Date.now() };
 
-    const savedCategories = Array.isArray(user.category)
-        ? user.category
-        : [];
-
-    const newCategory = {
-        ...category,
-        id: Date.now()
-    };
-
-    saveUser({
-        ...user,
-        category: [...savedCategories, newCategory]
-    });
-
+    saveUser({ ...user, category: [...savedCategories, newCategory] });
     return true;
 };
 
-
 export const getCategory = () => {
-
     const user = getUser();
-
-    if (!user) {
-        return [];
-    }
-
-    return Array.isArray(user.category)
-        ? user.category
-        : [];
+    return user && Array.isArray(user.category) ? user.category : [];
 };
+*/

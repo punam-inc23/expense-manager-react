@@ -1,11 +1,11 @@
 import CategoryCard from "./CardCategory";
 import "./CategoryCards.css";
-
-import { getCategory, getUser } from "../../../utils/userStorage";
+import useExpenses from "../../../hooks/useExpenses";
+import useCategories from "../../../hooks/useCategories";
 
 function CategoryCards({ limit = null }) {
-    const user = getUser();
-    const expenses = Array.isArray(user?.expense) ? user.expense : [];
+    const { expenses } = useExpenses();
+    const { categories: storedCategories } = useCategories();
     const categoryTotals = expenses.reduce((totals, expense) => {
         if (expense.transactionType === "received" || !expense.category) {
             return totals;
@@ -19,7 +19,7 @@ function CategoryCards({ limit = null }) {
         return totals;
     }, {});
 
-    const categories = getCategory()
+    const categories = storedCategories
         .map((category) => ({
             ...category,
             ...categoryTotals[category.id],

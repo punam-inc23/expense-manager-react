@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { getUser } from "../../../utils/userStorage";
+import useExpenses from "../../../hooks/useExpenses";
 import "./MonthlySpending.css";
 
 function MonthlySpending() {
 
     const [selectedBar, setSelectedBar] = useState(null);
     const [period, setPeriod] = useState("this-year");
-    const user = getUser();
-    const expenses = Array.isArray(user?.expense) ? user.expense : [];
+    const { expenses } = useExpenses();
     const currentYear = new Date().getFullYear();
     const chartYear = period === "last-year" ? currentYear - 1 : currentYear;
     const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];

@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import "../../addExpense/AddExpense.css";
-import { addUserExpense, updateUserExpense,getCategory } from "../../../utils/userStorage";
+import useExpenses from "../../../hooks/useExpenses";
+import useCategories from "../../../hooks/useCategories";
 
 
 const emptyExpense = {
@@ -11,32 +12,43 @@ const emptyExpense = {
     transactionType: "sent"
 };
 
+function expenseFormReducer(state, action) {
+    switch (action.type) {
+        case "fieldChanged":
+            return { ...state, [action.field]: action.value };
+        case "reset":
+            return { ...emptyExpense };
+        default:
+            return state;
+    }
+}
+
 function AddExpenseForm({ expenseToEdit, onSaved }) {
-
-    const [expense, setExpense] = useState(() => expenseToEdit || emptyExpense);
-
-    const [categories, setCategories] = useState(() => getCategory());
+    const [expense, dispatchForm] = useReducer(
+        expenseFormReducer,
+        expenseToEdit || emptyExpense,
+        (initialExpense) => ({ ...initialExpense })
+    );
+    const { addExpense, updateExpense } = useExpenses();
+    const { categories } = useCategories();
 
     const saveExpense = (event)=>{
         event.preventDefault();
 
-        const saved = expenseToEdit
-            ? updateUserExpense(expenseToEdit.id, expense)
-            : addUserExpense({
+        if (expenseToEdit) {
+            updateExpense({ id: expenseToEdit.id, changes: expense });
+        } else {
+            addExpense({
                 ...expense,
                 id: Date.now(),
                 createdAt: new Date().toISOString()
             });
-
-        if (saved === undefined || saved === false) {
-            alert("Please log in before saving an expense");
-            return;
         }
 
         if (expenseToEdit) {
             onSaved?.();
         } else {
-            setExpense(emptyExpense);
+            dispatchForm({ type: "reset" });
         }
 
     }
@@ -51,10 +63,7 @@ function AddExpenseForm({ expenseToEdit, onSaved }) {
                 className="input-div"
                 placeholder="e.g., Monthly Grocery, Stationery"
                 value={expense.title}
-                onChange={(event) => setExpense({
-                    ...expense,
-                    title: event.target.value
-                })}
+                onChange={(event) => dispatchForm({ type: "fieldChanged", field: "title", value: event.target.value })}
             />
 
             <label htmlFor="amount">Amount (₹)</label>
@@ -66,10 +75,7 @@ function AddExpenseForm({ expenseToEdit, onSaved }) {
                     id="amount"
                     placeholder="0.00"
                     value={expense.amount === 0 ? "" : expense.amount}
-                    onChange={(event) => setExpense({
-                        ...expense,
-                        amount: Number(event.target.value)
-                    })}
+                    onChange={(event) => dispatchForm({ type: "fieldChanged", field: "amount", value: Number(event.target.value) })}
                 />
             </div>
 
@@ -80,12 +86,7 @@ function AddExpenseForm({ expenseToEdit, onSaved }) {
                 id="category"
                 className="input-div"
                 value={expense.category}
-                onChange={(event) =>
-                    setExpense({
-                        ...expense,
-                        category: Number(event.target.value)
-                    })
-                }
+                onChange={(event) => dispatchForm({ type: "fieldChanged", field: "category", value: Number(event.target.value) })}
             >
                 <option value="" disabled>
                     Select category
@@ -106,10 +107,7 @@ function AddExpenseForm({ expenseToEdit, onSaved }) {
                     <input
                         type="checkbox"
                         checked={expense.transactionType === "sent"}
-                        onChange={() => setExpense({
-                            ...expense,
-                            transactionType: "sent"
-                        })}
+                        onChange={() => dispatchForm({ type: "fieldChanged", field: "transactionType", value: "sent" })}
                     />
                     Sent
                 </label>
@@ -118,10 +116,7 @@ function AddExpenseForm({ expenseToEdit, onSaved }) {
                     <input
                         type="checkbox"
                         checked={expense.transactionType === "received"}
-                        onChange={() => setExpense({
-                            ...expense,
-                            transactionType: "received"
-                        })}
+                        onChange={() => dispatchForm({ type: "fieldChanged", field: "transactionType", value: "received" })}
                     />
                     Received
                 </label>
@@ -134,10 +129,7 @@ function AddExpenseForm({ expenseToEdit, onSaved }) {
                 className="input-div description-input"
                 placeholder="Add some notes about this expense..."
                 value={expense.description}
-                onChange={(event) => setExpense({
-                    ...expense,
-                    description: event.target.value
-                })}
+                onChange={(event) => dispatchForm({ type: "fieldChanged", field: "description", value: event.target.value })}
             ></textarea>
 
             <div className="expense-btns">

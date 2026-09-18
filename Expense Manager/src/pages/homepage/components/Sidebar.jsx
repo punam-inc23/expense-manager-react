@@ -4,12 +4,14 @@ import SidebarItem from "./SidebarItem";
 import "./Sidebar.css"
 import { useNavigate } from "react-router-dom";
 import { removeUser } from "../../../utils/userStorage";
+import { loadUserData } from "../../../redux/store";
 
 function Sidebar({ activeTab, onTabChange }){
     const navigate = useNavigate();
 
     const handleLogout = () => {
         removeUser();
+        loadUserData(null);
         navigate("/login");
     };
 
